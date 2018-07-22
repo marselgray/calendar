@@ -1,3 +1,3 @@
 # calendar
 
-simple calendar application using django
+calendar application using django
