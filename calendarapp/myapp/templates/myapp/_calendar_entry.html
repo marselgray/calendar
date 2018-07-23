@@ -4,9 +4,9 @@
       <br>
       <h2>{{entry.name}}</h2>
         <h4>{{entry.date}}</h4>
-          <p>{{entry.description}}</p>
+          <p>{{entry.description| truncatechars:50}}</p>
         
-      <button class='btn btn-primary'> 
+      <button onClick='window.location='{% url 'details' pk=entry.id %}'' class='btn btn-primary'> 
       View Details</button>
 
     </div>
