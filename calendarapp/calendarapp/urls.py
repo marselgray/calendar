@@ -24,6 +24,9 @@ urlpatterns = [
     #add event path 
     path('entry/add', views.add, name='add'),
 
+    #delete event path
+    path('entry/delete/<int:pk>', views.delete, name='delete'),
+
     # admin path
     path('admin/', admin.site.urls),
 ]

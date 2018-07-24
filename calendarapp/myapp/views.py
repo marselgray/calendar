@@ -3,6 +3,8 @@ from .models import Entry
 from .forms import EntryForm 
 from django.http import HttpResponseRedirect
 
+
+
 def index(request):
     entries = Entry.objects.all()
     return render(request, 'myapp/index.html', 
@@ -12,12 +14,13 @@ def details(request, pk):
     Entry= entry.objects.get(id=pk)
     return render(request, "calenderproject/details.html", {"Entry":Entry})
 
+# add an event
 def add(request):
     #if statement Alpha
     if request.method == 'POST':
         
         form = EntryForm(request.POST)
-        #if statement Beta 
+        #if statement Beta (no else)
         if form.is_valid():
             #
             name = form.cleaned_data['name']
@@ -36,4 +39,16 @@ def add(request):
     else: 
         form = EntryForm()
 
+    #returns the form 
     return render(request, 'myapp/form.html', {'form': form})
+
+# delete an event
+def delete(request, pk):
+    
+    #if statement Charlie (no else)
+    if request.method == 'DELETE':
+        entry = get_object_or_404(Entry, pk=pk)
+        entry.delete()
+
+    return HttpResponseRedirect('/')
+
