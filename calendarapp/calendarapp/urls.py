@@ -20,5 +20,10 @@ from myapp import views
 urlpatterns = [
     path('', views.index, name='index'),
     path('calendar_entry/<int:pk>', views.details, name='details'),
+    
+    #add event path 
+    path('entry/add', views.add, name='add'),
+
+    # admin path
     path('admin/', admin.site.urls),
 ]

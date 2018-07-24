@@ -1,0 +1,33 @@
+{% extends 'myapp/base.html'%}
+
+{% block content %}
+<br>
+<div class='container form-group'>
+
+<div class='row'>
+    <div class='col-lg-6'>
+        <h1>Add A New Event</h1>
+    </div>
+    <div class='col-lg-6'>
+        <button onclick="window.location='{% url 'index' %}'" type='button' class='btn btn-info'>Go Back</button>
+    </div>
+</div>
+
+    <form method='POST'>
+     {% csrf_token %}
+        
+    {% for field in form %}
+        {{field.errors}}
+            <label>{{field.label}}</label>
+            <input name='{{field.name}}' class='form-control'/>
+    {% endfor %}
+        
+    <br>
+    <button type='submit' class='btn btn-success'> Submit 
+    </button>
+
+    </form>
+</div>
+
+
+{% endblock %}
