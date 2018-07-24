@@ -4,25 +4,24 @@ from .forms import EntryForm
 from django.http import HttpResponseRedirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login
-
-
+from django.contrib.auth.decorators import login_required
 
 def index(request):
     return render(request, 'myapp/index.html')
 
+@login_required
 def calendar(request):
-    entries = Entry.objects.all()
+    entries = Entry.objects.filter(author=request.user)
     return render(request, 'myapp/calendar.html',
         {'entries': entries})
 
-    
-
-
+@login_required
 def details(request, pk):
     Entry= entry.objects.get(id=pk)
     return render(request, "calenderproject/details.html", {"Entry":Entry})
 
 # add an event
+@login_required
 def add(request):
     #if statement Alpha
     if request.method == 'POST':
@@ -37,6 +36,7 @@ def add(request):
             
             Entry.objects.create(
                 name=name,
+                author=request.user,
                 date=date,
                 description=description
             ).save()
@@ -51,6 +51,7 @@ def add(request):
     return render(request, 'myapp/form.html', {'form': form})
 
 # delete an event
+@login_required
 def delete(request, pk):
     
     #if statement Charlie (no else)

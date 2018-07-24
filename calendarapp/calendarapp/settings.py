@@ -27,6 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+LOGIN_URL = '/login'
+
 # Login Redirect 
 LOGIN_REDIRECT_URL = '/calendar'
 
