@@ -2,29 +2,13 @@
 
 {% block content%}
    
-<div class='container'>
-<br>
-  <div class='row'>
-    <div class='col-lg-4'>
-      <h1>Calendar </h1>
-    </div>
-      <div class='col-lg-8'>
-        <button onclick="window.location='{% url 'add' %}'" type='button' class='btn btn-success'>Add Entry</button>
-      </div>
+<div class='page-center container'>
+    <h1>Calendar Application </h1>
 
-  </div>
+    <p> Keep Track of Event</p>
 
-
-
-
-<hr>
-   <div class='row'>
-   {% comment %} for loop to render all entries {% endcomment %}
-    {% for entry in entries %}
-      {% include 'myapp/_calendar_entry.html'%}
-    {% endfor %}
-    </div>
-   </div>
-    
+    <button class='btn btn-success' onclick="window.location='login'">
+    Login
+    </button>
 </div>
 {% endblock%}
